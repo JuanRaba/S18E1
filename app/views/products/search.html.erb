@@ -1,0 +1,11 @@
+<h1>PRODUCT SEARCH</h1>
+
+<table>
+<% @products.each do |u| %>
+  <tr>
+    <td><%=u.name%></td>
+    <td><%=u.description%></td>
+    <td>$<%=u.price%></td>
+  </tr>
+<% end%>
+</table>
