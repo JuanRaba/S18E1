@@ -6,10 +6,12 @@
 #  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Product.destroy_all
 10.times do |i|
   Product.create( 
     name: "Product #{i}",
     description: "description #{i}",
     price: i*100,
+    seller: User.first.id
     )
 end

@@ -6,6 +6,8 @@
     <td><%=u.name%></td>
     <td><%=u.description%></td>
     <td>$<%=u.price%></td>
+    <td><%=u.seller.try(:email)%></td>
+
   </tr>
 <% end%>
 </table>
