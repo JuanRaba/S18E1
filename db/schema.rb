@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_235547) do
+ActiveRecord::Schema.define(version: 2018_10_29_231311) do
 
 # Could not dump table "products" because of following StandardError
 #   Unknown type 'reference' for column 'seller_id'

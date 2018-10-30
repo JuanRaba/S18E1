@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, except: [:index, :search]
 
   def index
-    @products = Product.all
+    @products = Product.where("buyer_id is NULL")
   end
 
   def search
@@ -27,6 +27,24 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def buy
+    @product.buyer = helpers.current_user
+
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully buyed.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def buyed
+    @products = Product.where("buyer_id is NOT NULL")
   end
 
   def show

@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :selled, class_name: 'Product', foreign_key: :seller
+  has_many :buyed, class_name: 'Product', foreign_key: :buyer
 end
